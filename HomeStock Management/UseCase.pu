@@ -1,0 +1,20 @@
+@startuml
+title Usecase
+left to right direction
+actor StockAdmin
+actor StockUser
+(Add a item) as add
+(Check list of items) as check
+(Check detail of a item) as detail
+(Select a item) as select
+(Update a item) as update
+StockAdmin --> add
+StockAdmin --> check
+StockAdmin --> select
+StockAdmin --> detail
+StockAdmin --> update
+check <-- StockUser
+select <-- StockUser
+detail <-- StockUser
+@enduml
+
