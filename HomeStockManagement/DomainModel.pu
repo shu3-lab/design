@@ -1,0 +1,42 @@
+@startuml
+title Domain
+left to right direction
+
+package AuthDomain { 
+    class Users {
+        userId
+        name
+        mailAddress
+        roleId
+    }
+    class Roles {
+        roleId
+        name
+    }
+    Roles "1"<--"*" Users :refer to roleId
+}
+package StockDomain {
+    class Items {
+        itemId
+        name
+        description
+    }
+    class Place {
+        placeId
+        name
+        description
+    }
+    class StockInfo {
+        stockInfoId
+        itemId
+        placeId
+        amount
+    }
+    StockInfo "*"-->"1" Items :refer to itemId
+    StockInfo "*"-->"1" Place :refer to placeId
+
+    note top of StockInfo
+        Amount must be more than 0.
+    end note 
+}
+@enduml
