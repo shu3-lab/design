@@ -3,18 +3,57 @@ title Usecase
 left to right direction
 actor StockAdmin
 actor StockUser
-(Add a item) as add
-(Check list of items) as check
-(Check detail of a item) as detail
-(Select a item) as select
-(Update a item) as update
-StockAdmin --> add
-StockAdmin --> check
-StockAdmin --> select
-StockAdmin --> detail
-StockAdmin --> update
-check <-- StockUser
-select <-- StockUser
-detail <-- StockUser
+rectangle ItemManagement {
+    (Add a item) as add
+    (Check list of items) as check
+    (Check detail of a item) as detail
+    (Select a item) as select
+    (Update a item) as update
+    StockAdmin --> add
+    StockAdmin --> check
+    StockAdmin --> select
+    StockAdmin --> detail
+    StockAdmin --> update
+    check <-- StockUser
+    select <-- StockUser
+    detail <-- StockUser
+}
+rectangle PlaceManagement {
+    (Add place) as add2
+    (Check list of place) as check2
+    (Check detail of place) as detail2
+    (Select place) as select2
+    (Update place) as update2
+    StockAdmin --> add2
+    StockAdmin --> check2
+    StockAdmin --> select2
+    StockAdmin --> detail2
+    StockAdmin --> update2
+    check2 <-- StockUser
+    select2 <-- StockUser
+    detail2<-- StockUser
+}
+newpage
+left to right direction
+actor StockUser
+rectangle StockRegistration {
+    (Select place) as select3
+    (Select a item) as select4
+    (Add items) as add3
+    select4 .> add3 :include
+    (Input amount) as input
+    StockUser ---> select3
+    StockUser ---> select4
+    StockUser ---> add3
+    StockUser ---> input
+}
+rectangle UpdateAmount {
+    (Select place) as select5
+    (Select a item) as select6
+    (Update amount) as update
+    StockUser --> select5
+    StockUser --> select6
+    StockUser --> update
+}
 @enduml
 
